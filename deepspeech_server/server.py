@@ -127,7 +127,7 @@ def deepspeech_server(aio_scheduler, sources):
                 status=500
         )),
         ops.map(lambda i: httpd.Response(
-            data=i.text.encode('utf-8'),
+            data=i.text.encode('utf-8', errors='surrogateescape'),
             context=i.context,
         )),
     )
